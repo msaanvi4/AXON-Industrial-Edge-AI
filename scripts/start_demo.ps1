@@ -12,8 +12,13 @@ if (-not (Test-Path -LiteralPath $projectPython)) {
 New-Item -ItemType Directory -Path $runtimePath -Force | Out-Null
 $previousMode = $env:AXON_STORAGE_MODE
 $previousBackendUrl = $env:BACKEND_URL
+$previousPreparedDir = $env:AXON_PADERBORN_PREPARED_DIR
 $env:AXON_STORAGE_MODE = 'memory'
 $env:BACKEND_URL = 'http://127.0.0.1:8000'
+$preparedDir = Join-Path $projectRoot 'ml\data\paderborn\prepared-r4'
+if (-not $env:AXON_PADERBORN_PREPARED_DIR -and (Test-Path -LiteralPath (Join-Path $preparedDir 'manifest.json'))) {
+    $env:AXON_PADERBORN_PREPARED_DIR = $preparedDir
+}
 try {
     Push-Location $projectRoot
     try {
@@ -61,4 +66,5 @@ try {
 } finally {
     $env:AXON_STORAGE_MODE = $previousMode
     $env:BACKEND_URL = $previousBackendUrl
+    $env:AXON_PADERBORN_PREPARED_DIR = $previousPreparedDir
 }
