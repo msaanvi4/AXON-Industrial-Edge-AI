@@ -25,7 +25,8 @@ live Raspberry Pi/LoRa telemetry.
   the recorded waveform, the 16 features, the documented experimental label,
   and the deployed model decision. Every resulting event is visibly tagged as
   a historical replay.
-- **Bearing diagnosis** is the live path. It shows compact diagnostic events
+- **Model Analysis** is the live path. It shows the deployed Random Forest's
+  model specification, grouped-validation metrics, and compact diagnostic events
   delivered from the Raspberry Pi through the LoRa gateway. Manual CSV replay
   remains available only as a troubleshooting fallback.
 

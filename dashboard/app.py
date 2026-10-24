@@ -1,6 +1,7 @@
 """Streamlit dashboard for live edge diagnostics and real Paderborn data replay."""
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 
@@ -15,7 +16,7 @@ API = os.getenv("BACKEND_URL", f"http://{os.getenv('BACKEND_IP', 'localhost')}:8
 TIMEOUT = float(os.getenv("API_TIMEOUT_SECONDS", "3"))
 DATASET_REPLAY_TIMEOUT = float(os.getenv("DATASET_REPLAY_TIMEOUT_SECONDS", "30"))
 REFRESH = int(os.getenv("DASHBOARD_REFRESH_SECONDS", "3"))
-st.set_page_config(page_title="AXON | Bearing Intelligence", page_icon="◉", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="AXON | Model Analysis", page_icon="◉", layout="wide", initial_sidebar_state="expanded")
 
 st.markdown("""
 <style>
@@ -92,14 +93,27 @@ st.markdown("""
 
 def hero(status_text="EDGE MODEL ONLINE"):
     st.markdown(f"""<div class='axon-hero'>
-      <div><div class='axon-kicker'>AXON · EDGE DIAGNOSTICS</div><h1>Bearing diagnostics</h1>
-      <p>Local vibration analysis, model decisions, and maintenance evidence in one workspace.</p></div>
+      <div><div class='axon-kicker'>AXON · EDGE DIAGNOSTICS</div><h1>Model Analysis</h1>
+      <p>Deployed bearing model specifications, live vibration analysis, and diagnostic evidence.</p></div>
       <div class='axon-chip'>{status_text}</div>
     </div>""", unsafe_allow_html=True)
 
 
 def section_title(title, note):
     st.markdown(f"<div class='section-label'>{title}</div><div class='section-note'>{note}</div>", unsafe_allow_html=True)
+
+
+def active_model_specification():
+    """Load the specification and evaluation bundled with the active model."""
+    artifact_dir = Path(__file__).resolve().parents[1] / "ml" / "artifacts" / "bearing" / "active"
+    try:
+        with (artifact_dir / "metadata.json").open(encoding="utf-8") as stream:
+            metadata = json.load(stream)
+        with (artifact_dir / "evaluation.json").open(encoding="utf-8") as stream:
+            evaluation = json.load(stream)
+        return metadata, evaluation
+    except (OSError, ValueError):
+        return None, None
 
 
 def fetch(path, *, timeout=TIMEOUT, **params):
@@ -479,7 +493,7 @@ def paderborn_dataset_replay_panel():
             st.error(f"Could not save the historical replay: {save_error}")
         elif saved_result.get("saved"):
             st.session_state["bearing_asset_id"] = asset_id
-            st.success("Saved as a historical Paderborn replay. Open Bearing diagnosis to inspect this same event in the component-localization workspace.")
+            st.success("Saved as a historical Paderborn replay. Open Model Analysis to inspect this same event in the component-localization workspace.")
     with st.expander("Replay provenance", expanded=False):
         st.json({"dataset": replay_dataset, "diagnostic": diagnostic})
 
@@ -487,7 +501,7 @@ def paderborn_dataset_replay_panel():
 def bearing_diagnosis_panel():
     status, status_error = fetch("/diagnostics/model-status", timeout=DATASET_REPLAY_TIMEOUT)
     hero("API MODEL READY" if not status_error and status and status.get("available") else "MODEL CHECK REQUIRED")
-    section_title("Bearing diagnostic workspace", "The Raspberry Pi edge path is primary: local sensor window → Pi inference → LoRa summary → gateway diagnostic. This view refreshes automatically.")
+    section_title("Model analysis workspace", "The Raspberry Pi edge path is primary: local sensor window → Pi inference → LoRa summary → gateway diagnostic. This view refreshes automatically.")
     input_column, contract_column = st.columns((1.25, .75), gap="large")
     with input_column:
         if "bearing_asset_id" not in st.session_state:
@@ -513,6 +527,40 @@ def bearing_diagnosis_panel():
         st.caption("No bearing fault label, location, cost, or repair instruction is inferred while the model is unavailable.")
     if status and status.get("available"):
         st.success(f"API model: {status['model_version']} · {status['kind'].replace('_', ' ')}")
+    metadata, evaluation = active_model_specification()
+    with st.expander("Model specifications and validation", expanded=True):
+        if metadata and evaluation:
+            training = metadata.get("training", {})
+            selected = training.get("selected_model", {})
+            contract = metadata.get("input_contract", {})
+            split = metadata.get("split", {})
+            metric_cols = st.columns(4)
+            metric_cols[0].metric("Window accuracy", f"{evaluation.get('accuracy', 0):.2%}")
+            metric_cols[1].metric("Macro F1", f"{evaluation.get('macro_f1', 0):.4f}")
+            metric_cols[2].metric("Balanced accuracy", f"{evaluation.get('balanced_accuracy', 0):.2%}")
+            metric_cols[3].metric("Evaluation windows", f"{training.get('windows', 0):,}")
+            specification = {
+                "Model version": metadata.get("model_version"),
+                "Estimator": "scikit-learn RandomForestClassifier",
+                "Trees": selected.get("trees"),
+                "Max features per split": selected.get("max_features"),
+                "Minimum samples per leaf": selected.get("min_samples_leaf"),
+                "Max samples per tree": selected.get("max_samples"),
+                "Bearing-balanced training": selected.get("group_balanced"),
+                "Random seed": training.get("seed"),
+                "Classes": ", ".join(metadata.get("classes", [])),
+                "Sampling frequency": f"{contract.get('sampling_frequency_hz', 'Unknown')} Hz",
+                "Window size": f"{contract.get('window_samples', 'Unknown')} samples",
+                "Feature count": len(contract.get("feature_names", [])),
+                "Features": ", ".join(contract.get("feature_names", [])),
+                "Validation split": f"{split.get('strategy', 'Unknown')} grouped by {split.get('group', 'group')} · {split.get('outer_folds', 'Unknown')} outer folds",
+                "Training recordings": metadata.get("source", {}).get("selected_recordings"),
+                "Physical bearings in fit": training.get("physical_bearings_per_class"),
+            }
+            st.json(specification, expanded=True)
+            st.caption("Metrics are grouped cross-validation results over vibration windows. Windows from the same physical bearing stay in one fold; they are not independent physical-bearing trials. The operational-confidence display cap is a UI setting, not a probability calibration result.")
+        else:
+            st.warning("Bundled model specification or evaluation report is unavailable.")
     with st.expander("Manual CSV replay (optional)", expanded=False):
         st.caption("This is a troubleshooting and demo fallback. The normal Raspberry Pi route sends a compact diagnostic summary over LoRa, so no file is needed during live operation.")
         upload = st.file_uploader("Recorded vibration window CSV", type=["csv"], help="Use only a recorded window with the active model's sample count and sampling frequency.")
@@ -596,8 +644,8 @@ def bearing_diagnosis_panel():
 
 st.sidebar.markdown("### AXON")
 st.sidebar.caption("Local edge diagnostics")
-view = st.sidebar.radio("Workspace", ("Paderborn data replay", "Bearing diagnosis"), key="workspace")
-if view == "Bearing diagnosis":
+view = st.sidebar.radio("Workspace", ("Paderborn data replay", "Model Analysis"), key="workspace")
+if view == "Model Analysis":
     st.sidebar.success("Live path: Pi → LoRa → gateway")
     st.sidebar.caption("Use Paderborn data replay to interact with the provided historical recordings.")
     bearing_diagnosis_panel()
