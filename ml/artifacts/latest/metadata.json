@@ -1,0 +1,29 @@
+{
+  "model_name": "IsolationForest",
+  "model_version": "axon-iforest-v1",
+  "trained_at": "2026-10-17T07:43:40.251893+00:00",
+  "features": [
+    "temp",
+    "vibration",
+    "current"
+  ],
+  "threshold": 0.037872855632647175,
+  "scoring_convention": "anomaly_score = -decision_function; larger values are more anomalous",
+  "calibration_method": "99th percentile of known-normal chronological validation records",
+  "dataset": {
+    "path": "ml\\data\\synthetic_machine_data.csv",
+    "sha256": "061943166f378ac458396e475bf7f29680ff7d755ffd0438cb0465b38f64a215",
+    "synthetic": true
+  },
+  "random_seed": 42,
+  "contamination": 0.02,
+  "split_rows": {
+    "train": 2160,
+    "validation": 720,
+    "test": 720
+  },
+  "dependencies": {
+    "python": "3.12.14",
+    "scikit_learn": "1.9.1"
+  }
+}

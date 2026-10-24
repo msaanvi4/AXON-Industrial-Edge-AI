@@ -1,0 +1,1 @@
+"""Offline Isolation Forest training."""

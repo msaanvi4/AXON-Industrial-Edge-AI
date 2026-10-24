@@ -1,0 +1,8 @@
+streamlit==1.40.2
+requests==2.32.3
+pandas==2.2.3
+numpy==1.26.4
+# Newer PyArrow builds require NumPy 2.x.  This pin keeps Streamlit's
+# dataframe/chart support compatible with the project's NumPy 1.26 runtime.
+pyarrow==17.0.0
+python-dotenv==1.2.4

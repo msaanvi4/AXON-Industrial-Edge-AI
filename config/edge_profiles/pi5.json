@@ -1,0 +1,10 @@
+{
+  "name": "pi5",
+  "cpu_cores": 4,
+  "cpu_quota": 4.0,
+  "memory_mb": 4096,
+  "storage_mb": 2048,
+  "swap_policy": "disabled in the test container; host swap is not modified",
+  "architecture": "arm64 target (not emulated by this profile)",
+  "workload": "edge inference, LoRa gateway services, bounded SQLite buffering"
+}

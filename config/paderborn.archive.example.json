@@ -1,0 +1,14 @@
+{
+  "schema_version": "axon-paderborn-config-v2",
+  "dataset_dir": "PATH_TO_PADERBORN_ARCHIVE.zip",
+  "output_dir": "ml/data/paderborn/prepared-r4",
+  "label_map_file": "config/paderborn.labels.json",
+  "license_id": "CC-BY-NC-4.0",
+  "source_url": "https://mb.uni-paderborn.de/en/kat/research/bearing-datacenter/data-sets-and-download",
+  "sampling_frequency_hz": 64000,
+  "window_samples": 4096,
+  "window_overlap": 2048,
+  "max_recordings_per_bearing_condition": 4,
+  "sensor_key_candidates": ["vibration_1"],
+  "notes": "Paderborn labels are sourced from the fact sheets. ZIP archives are streamed without full extraction. The recording cap is deterministic and bounds training time; set to 0 to include every recording."
+}

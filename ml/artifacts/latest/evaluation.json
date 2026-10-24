@@ -1,0 +1,14 @@
+{
+  "model_version": "axon-iforest-v1",
+  "rows": 3600,
+  "precision": 0.9826498422712934,
+  "recall": 0.4326388888888889,
+  "f1": 0.600771456123433,
+  "confusion_matrix": {
+    "tn": 2149,
+    "fp": 11,
+    "fn": 817,
+    "tp": 623
+  },
+  "note": "Synthetic-data metrics do not establish real-world fault performance."
+}

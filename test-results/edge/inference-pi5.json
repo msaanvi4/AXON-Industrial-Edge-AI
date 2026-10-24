@@ -1,0 +1,52 @@
+{
+  "measured_at": "2026-10-17T09:33:44.580092+00:00",
+  "measurement_kind": "host inference benchmark; CPU/memory limits are not applied by this script",
+  "host": {
+    "system": "Windows",
+    "release": "11",
+    "machine": "AMD64",
+    "python": "3.12.14",
+    "processor": "ARMv8 (64-bit) Family 8 Model 1 Revision 201, Qualcomm Technologies Inc"
+  },
+  "profile_target": {
+    "name": "pi5",
+    "cpu_cores": 4,
+    "cpu_quota": 4.0,
+    "memory_mb": 4096,
+    "storage_mb": 2048,
+    "swap_policy": "disabled in the test container; host swap is not modified",
+    "architecture": "arm64 target (not emulated by this profile)",
+    "workload": "edge inference, MQTT, selected local services, bounded buffering"
+  },
+  "artifact": "C:\\Users\\Yuvraj Pateria\\OneDrive\\Documents\\New project\\ml\\artifacts\\latest",
+  "model_version": "axon-iforest-v1",
+  "features": [
+    "temp",
+    "vibration",
+    "current"
+  ],
+  "workload": {
+    "iterations": 100,
+    "warmup": 10,
+    "concurrency": 1
+  },
+  "model_load_ms": 7506.6795,
+  "latency_ms": {
+    "p50": 31.12435,
+    "p95": 47.11327,
+    "p99": 51.021678,
+    "mean": 33.349626
+  },
+  "throughput_predictions_per_second": 29.87,
+  "elapsed_seconds": 3.347853,
+  "process_cpu_seconds": 3.078125,
+  "process_rss_bytes": {
+    "before_load": 62033920,
+    "after_load": 210092032,
+    "after_run": 211636224
+  },
+  "psutil_available": true,
+  "limitations": [
+    "No ARM instruction-set emulation or cgroup limit is applied by this Python-only benchmark."
+  ]
+}

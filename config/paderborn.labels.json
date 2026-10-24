@@ -1,0 +1,194 @@
+{
+  "K001": {
+    "fault_class": "healthy",
+    "label_source": "Paderborn bearing profile K001/K001.pdf: no damage section is documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 0
+  },
+  "K002": {
+    "fault_class": "healthy",
+    "label_source": "Paderborn bearing profile K002/K002.pdf: no damage section is documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 0
+  },
+  "K003": {
+    "fault_class": "healthy",
+    "label_source": "Paderborn bearing profile K003/K003.pdf: no damage section is documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 0
+  },
+  "K004": {
+    "fault_class": "healthy",
+    "label_source": "Paderborn bearing profile K004/K004.pdf: no damage section is documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 0
+  },
+  "K005": {
+    "fault_class": "healthy",
+    "label_source": "Paderborn bearing profile K005/K005.pdf: no damage section is documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 0
+  },
+  "K006": {
+    "fault_class": "healthy",
+    "label_source": "Paderborn bearing profile K006/K006.pdf: no damage section is documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 0
+  },
+  "KA01": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KA01/KA01.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KA03": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KA03/KA03.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KA04": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KA04/KA04.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KA05": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KA05/KA05.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KA06": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KA06/KA06.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KA07": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KA07/KA07.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KA08": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KA08/KA08.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KA09": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KA09/KA09.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KA15": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KA15/KA15.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KA16": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KA16/KA16.pdf: 2 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 2
+  },
+  "KA22": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KA22/KA22.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KA30": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KA30/KA30.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KB23": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KB23/KB23.pdf: 3 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 3
+  },
+  "KB24": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KB24/KB24.pdf: 2 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 2
+  },
+  "KB27": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KB27/KB27.pdf: 2 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 2
+  },
+  "KI01": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KI01/KI01.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KI03": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KI03/KI03.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KI04": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KI04/KI04.pdf: 2 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 2
+  },
+  "KI05": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KI05/KI05.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KI07": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KI07/KI07.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KI08": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KI08/KI08.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KI14": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KI14/KI14.pdf: 2 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 2
+  },
+  "KI16": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KI16/KI16.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KI17": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KI17/KI17.pdf: 2 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 2
+  },
+  "KI18": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KI18/KI18.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  },
+  "KI21": {
+    "fault_class": "other_bearing_damage",
+    "label_source": "Paderborn bearing profile KI21/KI21.pdf: 1 damage(s) documented",
+    "label_confidence": "documented",
+    "fact_sheet_damage_count": 1
+  }
+}

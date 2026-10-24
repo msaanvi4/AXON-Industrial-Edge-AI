@@ -1,0 +1,16 @@
+services:
+  edge:
+    build:
+      context: .
+      dockerfile: Dockerfile.edge-test
+    environment:
+      BACKEND_URL: ${BACKEND_URL:-http://host.docker.internal:8000}
+      MACHINE_ID: ${MACHINE_ID:-M1}
+      PUBLISH_INTERVAL: ${PUBLISH_INTERVAL:-1}
+    cpus: ${EDGE_CPU_QUOTA:-4.0}
+    cpuset: ${EDGE_CPUSET:-0-3}
+    mem_limit: ${EDGE_MEMORY_LIMIT:-2048m}
+    pids_limit: ${EDGE_PIDS_LIMIT:-192}
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=32m

@@ -1,0 +1,6 @@
+numpy==1.26.4
+scikit-learn==1.9.1
+joblib==1.6.0
+scipy>=1.11,<1.15
+# TensorFlow availability varies by OS and CPU architecture; install only on a supported training host.
+# tensorflow>=2.16,<2.20

@@ -1,0 +1,98 @@
+{
+  "source": {
+    "url": "https://mb.uni-paderborn.de/en/kat/research/bearing-datacenter/data-sets-and-download",
+    "license_id": "CC-BY-NC-4.0"
+  },
+  "window_generation": {
+    "window_samples": 4096,
+    "window_overlap": 2048
+  },
+  "records": [
+    {
+      "source_file": "demo/paderborn/N09_M07_F10_K001_1.npz",
+      "recording_id": "N09_M07_F10_K001_1",
+      "bearing_id": "K001",
+      "sha256": "ce478032816457fc9c1b9a9705c3b3b1e2f0e13a0becb1b41a8824e4a498de11",
+      "source_dataset": "Paderborn Bearing DataCenter",
+      "experiment_id": "N09_M07_F10",
+      "operating_condition": "N09_M07_F10",
+      "sensor_type": "N09_M07_F10_K001_1.Y[6].Data (vibration_1)",
+      "sampling_frequency_hz": 64000.0,
+      "fault_class": "healthy",
+      "fault_location": null,
+      "damage_type": null,
+      "label_source": "K001.pdf from the official Paderborn archive",
+      "label_confidence": "documented",
+      "license_id": "CC-BY-NC-4.0",
+      "windows": 2,
+      "packaged_windows": true
+    },
+    {
+      "source_file": "demo/paderborn/N09_M07_F10_KA04_1.npz",
+      "recording_id": "N09_M07_F10_KA04_1",
+      "bearing_id": "KA04",
+      "sha256": "089cb116b7ec688a01c1970916d5f9a06eda8f0afbd61e568d226a94691fa02d",
+      "source_dataset": "Paderborn Bearing DataCenter",
+      "experiment_id": "N09_M07_F10",
+      "operating_condition": "N09_M07_F10",
+      "sensor_type": "N09_M07_F10_KA04_1.Y[6].Data (vibration_1)",
+      "sampling_frequency_hz": 64000.0,
+      "fault_class": "other_bearing_damage",
+      "fault_location": null,
+      "damage_type": "outer-race fatigue pitting",
+      "label_source": "KA04.pdf: documented outer-ring fatigue pitting",
+      "label_confidence": "documented",
+      "license_id": "CC-BY-NC-4.0",
+      "windows": 2,
+      "packaged_windows": true
+    },
+    {
+      "source_file": "demo/paderborn/N09_M07_F10_K003_1.npz",
+      "recording_id": "N09_M07_F10_K003_1",
+      "bearing_id": "K003",
+      "sha256": "794a902d20342a73f6ecde293eceaca6eb654d912b80f701889a84e3602e7d6f",
+      "source_dataset": "Paderborn Bearing DataCenter",
+      "experiment_id": "N09_M07_F10",
+      "operating_condition": "N09_M07_F10",
+      "sensor_type": "N09_M07_F10_K003_1.Y[6].Data (vibration_1)",
+      "sampling_frequency_hz": 64000.0,
+      "fault_class": "healthy",
+      "fault_location": null,
+      "damage_type": null,
+      "label_source": "K003.pdf: profile contains no documented damage section",
+      "label_confidence": "documented",
+      "license_id": "CC-BY-NC-4.0",
+      "windows": 2,
+      "packaged_windows": true
+    },
+    {
+      "source_file": "demo/paderborn/N09_M07_F10_KI04_1.npz",
+      "recording_id": "N09_M07_F10_KI04_1",
+      "bearing_id": "KI04",
+      "sha256": "5565956486386b68b0461be520477f257439935d3a25ab97ff4e69d0bf8da7c6",
+      "source_dataset": "Paderborn Bearing DataCenter",
+      "experiment_id": "N09_M07_F10",
+      "operating_condition": "N09_M07_F10",
+      "sensor_type": "N09_M07_F10_KI04_1.Y[6].Data (vibration_1)",
+      "sampling_frequency_hz": 64000.0,
+      "fault_class": "other_bearing_damage",
+      "fault_location": null,
+      "damage_type": "combined inner- and outer-race damage",
+      "label_source": "KI04.pdf: documented inner-ring pitting and outer-ring indentation",
+      "label_confidence": "documented",
+      "license_id": "CC-BY-NC-4.0",
+      "windows": 2,
+      "packaged_windows": true
+    }
+  ],
+  "class_counts": {
+    "healthy": 4,
+    "other_bearing_damage": 4
+  },
+  "prepared_windows": 8,
+  "physical_bearings_per_class": {
+    "healthy": 2,
+    "other_bearing_damage": 2
+  },
+  "note": "Eight exact historical windows for integration replay only; not the training dataset or a new evaluation."
+}

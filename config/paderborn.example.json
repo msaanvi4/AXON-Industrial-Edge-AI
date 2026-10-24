@@ -1,0 +1,14 @@
+{
+  "schema_version": "axon-paderborn-config-v1",
+  "dataset_dir": "ml/data/paderborn/raw",
+  "output_dir": "ml/data/paderborn/prepared",
+  "license_id": "CC-BY-NC-4.0",
+  "source_url": "https://mb.uni-paderborn.de/en/kat/research/bearing-datacenter/data-sets-and-download",
+  "sampling_frequency_hz": 64000,
+  "window_samples": 4096,
+  "window_overlap": 2048,
+  "max_recordings_per_bearing_condition": 0,
+  "sensor_key_candidates": ["vibration_1"],
+  "label_map": {},
+  "notes": "Copy this file, replace paths and supply every label_map entry from the official fact sheets for the files you acquired. Set max_recordings_per_bearing_condition to a positive number for a deterministic per-bearing/per-condition storage cap; zero keeps every recording. Unmapped recordings are excluded rather than guessed."
+}

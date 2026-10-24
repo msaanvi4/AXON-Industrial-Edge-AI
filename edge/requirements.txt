@@ -1,0 +1,3 @@
+-r ../ml/requirements-bearing.txt
+pyserial==3.5
+requests==2.32.3

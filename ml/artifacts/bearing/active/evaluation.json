@@ -1,0 +1,1294 @@
+{
+  "accuracy": 0.918560338743825,
+  "macro_f1": 0.8678416439101395,
+  "balanced_accuracy": 0.872828480798667,
+  "classification_report": {
+    "healthy": {
+      "precision": 0.7726278259460335,
+      "recall": 0.7997819157859419,
+      "f1-score": 0.7859704076165355,
+      "support": 11922.0
+    },
+    "other_bearing_damage": {
+      "precision": 0.9535819850653391,
+      "recall": 0.945875045811392,
+      "f1-score": 0.9497128802037437,
+      "support": 51843.0
+    },
+    "accuracy": 0.918560338743825,
+    "macro avg": {
+      "precision": 0.8631049055056863,
+      "recall": 0.872828480798667,
+      "f1-score": 0.8678416439101395,
+      "support": 63765.0
+    },
+    "weighted avg": {
+      "precision": 0.9197493890483962,
+      "recall": 0.918560338743825,
+      "f1-score": 0.9190983148750415,
+      "support": 63765.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      9535,
+      2387
+    ],
+    [
+      2806,
+      49037
+    ]
+  ],
+  "classes": [
+    "healthy",
+    "other_bearing_damage"
+  ],
+  "log_loss": 1.2358967389889055,
+  "per_bearing": {
+    "bearings": {
+      "K001": {
+        "true_class": "healthy",
+        "windows": 1987,
+        "window_accuracy": 0.9899345747357826,
+        "mean_damage_probability": 0.02071351120911927,
+        "majority_vote_prediction": "healthy"
+      },
+      "K002": {
+        "true_class": "healthy",
+        "windows": 1986,
+        "window_accuracy": 0.0,
+        "mean_damage_probability": 0.9995418207030745,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "K003": {
+        "true_class": "healthy",
+        "windows": 1992,
+        "window_accuracy": 0.9974899598393574,
+        "mean_damage_probability": 0.04675214965199905,
+        "majority_vote_prediction": "healthy"
+      },
+      "K004": {
+        "true_class": "healthy",
+        "windows": 1985,
+        "window_accuracy": 0.9738035264483628,
+        "mean_damage_probability": 0.059255231214464577,
+        "majority_vote_prediction": "healthy"
+      },
+      "K005": {
+        "true_class": "healthy",
+        "windows": 1988,
+        "window_accuracy": 0.8375251509054326,
+        "mean_damage_probability": 0.2503677359812294,
+        "majority_vote_prediction": "healthy"
+      },
+      "K006": {
+        "true_class": "healthy",
+        "windows": 1984,
+        "window_accuracy": 0.9994959677419355,
+        "mean_damage_probability": 0.011832835532754457,
+        "majority_vote_prediction": "healthy"
+      },
+      "KA01": {
+        "true_class": "other_bearing_damage",
+        "windows": 1984,
+        "window_accuracy": 0.985383064516129,
+        "mean_damage_probability": 0.9825871081893489,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KA03": {
+        "true_class": "other_bearing_damage",
+        "windows": 2032,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.9839961762592175,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KA04": {
+        "true_class": "other_bearing_damage",
+        "windows": 1986,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.9981496669381865,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KA05": {
+        "true_class": "other_bearing_damage",
+        "windows": 1997,
+        "window_accuracy": 0.9934902353530295,
+        "mean_damage_probability": 0.9827214028388068,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KA06": {
+        "true_class": "other_bearing_damage",
+        "windows": 1990,
+        "window_accuracy": 0.9939698492462311,
+        "mean_damage_probability": 0.9462511183600386,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KA07": {
+        "true_class": "other_bearing_damage",
+        "windows": 1997,
+        "window_accuracy": 0.9449173760640961,
+        "mean_damage_probability": 0.9077595023092868,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KA08": {
+        "true_class": "other_bearing_damage",
+        "windows": 1984,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.9968565816342898,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KA09": {
+        "true_class": "other_bearing_damage",
+        "windows": 1994,
+        "window_accuracy": 0.9854563691073219,
+        "mean_damage_probability": 0.9521057119391682,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KA15": {
+        "true_class": "other_bearing_damage",
+        "windows": 1984,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.9810600445095153,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KA16": {
+        "true_class": "other_bearing_damage",
+        "windows": 1984,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.999890249939797,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KA22": {
+        "true_class": "other_bearing_damage",
+        "windows": 1994,
+        "window_accuracy": 0.9974924774322969,
+        "mean_damage_probability": 0.7837458455974337,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KA30": {
+        "true_class": "other_bearing_damage",
+        "windows": 1984,
+        "window_accuracy": 0.9158266129032258,
+        "mean_damage_probability": 0.9151202497565905,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KB23": {
+        "true_class": "other_bearing_damage",
+        "windows": 1993,
+        "window_accuracy": 0.9979929754139488,
+        "mean_damage_probability": 0.9721941287754786,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KB24": {
+        "true_class": "other_bearing_damage",
+        "windows": 1991,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.9990682822720744,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KB27": {
+        "true_class": "other_bearing_damage",
+        "windows": 1984,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.9973587524895228,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KI01": {
+        "true_class": "other_bearing_damage",
+        "windows": 1984,
+        "window_accuracy": 0.8951612903225806,
+        "mean_damage_probability": 0.8993389627746541,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KI03": {
+        "true_class": "other_bearing_damage",
+        "windows": 1998,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.9905889876361554,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KI04": {
+        "true_class": "other_bearing_damage",
+        "windows": 1984,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.9956140699065347,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KI05": {
+        "true_class": "other_bearing_damage",
+        "windows": 1994,
+        "window_accuracy": 0.11283851554663991,
+        "mean_damage_probability": 0.183886933722691,
+        "majority_vote_prediction": "healthy"
+      },
+      "KI07": {
+        "true_class": "other_bearing_damage",
+        "windows": 2004,
+        "window_accuracy": 0.7984031936127745,
+        "mean_damage_probability": 0.7514749239043689,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KI08": {
+        "true_class": "other_bearing_damage",
+        "windows": 1995,
+        "window_accuracy": 0.9719298245614035,
+        "mean_damage_probability": 0.953714227316515,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KI14": {
+        "true_class": "other_bearing_damage",
+        "windows": 1992,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.991810867145832,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KI16": {
+        "true_class": "other_bearing_damage",
+        "windows": 2042,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.9993453788974112,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KI17": {
+        "true_class": "other_bearing_damage",
+        "windows": 1995,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.9935533119257514,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KI18": {
+        "true_class": "other_bearing_damage",
+        "windows": 1994,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.9983671862147288,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KI21": {
+        "true_class": "other_bearing_damage",
+        "windows": 1983,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.9998680510529981,
+        "majority_vote_prediction": "other_bearing_damage"
+      }
+    },
+    "mean_window_accuracy_by_class": {
+      "healthy": 0.7997081966118117,
+      "other_bearing_damage": 0.94587929938768
+    },
+    "group_balanced_accuracy": 0.8727937479997459
+  },
+  "operational_policy_at_0_70": {
+    "minimum_probability": 0.7,
+    "decisive_coverage": 0.9483572492746805,
+    "uncertain_rate": 0.051642750725319535,
+    "accuracy_on_decisive_windows": 0.928942320412753,
+    "damaged_windows_returning_fault_suspected": 0.9139903169183882,
+    "note": "Matches AXON's current 0.70 minimum-probability uncertainty policy; probabilities remain uncalibrated."
+  },
+  "evaluation_unit": "nested out-of-fold predictions; all windows from each physical bearing held out together",
+  "interpretation": "Development cross-validation across the supplied Paderborn bearings; this is not independent field validation.",
+  "cross_validation": {
+    "strategy": "nested_stratified_group_k_fold",
+    "group": "physical_bearing_id",
+    "outer_folds": 5,
+    "inner_folds_max": 3,
+    "folds": [
+      {
+        "fold": 1,
+        "train_groups": [
+          "K001",
+          "K003",
+          "K004",
+          "K005",
+          "K006",
+          "KA03",
+          "KA04",
+          "KA05",
+          "KA06",
+          "KA07",
+          "KA09",
+          "KA15",
+          "KA16",
+          "KA22",
+          "KA30",
+          "KB23",
+          "KB27",
+          "KI01",
+          "KI03",
+          "KI04",
+          "KI05",
+          "KI07",
+          "KI08",
+          "KI14",
+          "KI17",
+          "KI21"
+        ],
+        "held_out_groups": [
+          "K002",
+          "KA01",
+          "KA08",
+          "KB24",
+          "KI16",
+          "KI18"
+        ],
+        "train_windows": 51784,
+        "held_out_windows": 11981,
+        "selected_model": "rf_group_balanced_leaf4",
+        "inner_selection": [
+          {
+            "name": "rf_group_balanced_leaf4",
+            "inner_group_balanced_accuracy": 0.987849289973911,
+            "inner_fold_scores": [
+              0.987809346947403,
+              0.9986220603054123,
+              0.9771164626689177
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy15",
+            "inner_group_balanced_accuracy": 0.9723306105382088,
+            "inner_fold_scores": [
+              0.9864480478304194,
+              0.9485002764326521,
+              0.9820435073515548
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy20",
+            "inner_group_balanced_accuracy": 0.9721630356152984,
+            "inner_fold_scores": [
+              0.9869866145570466,
+              0.9472972033502971,
+              0.9822052889385515
+            ]
+          },
+          {
+            "name": "rf_group_balanced_leaf2",
+            "inner_group_balanced_accuracy": 0.9712889861985143,
+            "inner_fold_scores": [
+              0.9851206652603972,
+              0.9479975118613534,
+              0.9807487814737924
+            ]
+          },
+          {
+            "name": "rf_previous_baseline",
+            "inner_group_balanced_accuracy": 0.9591242954677613,
+            "inner_fold_scores": [
+              0.9678722408430716,
+              0.9314666760944137,
+              0.9780339694657987
+            ]
+          }
+        ],
+        "group_balanced_accuracy": 0.4985383064516129
+      },
+      {
+        "fold": 2,
+        "train_groups": [
+          "K001",
+          "K002",
+          "K004",
+          "K005",
+          "K006",
+          "KA01",
+          "KA04",
+          "KA05",
+          "KA06",
+          "KA07",
+          "KA08",
+          "KA09",
+          "KA16",
+          "KA22",
+          "KB23",
+          "KB24",
+          "KB27",
+          "KI01",
+          "KI03",
+          "KI04",
+          "KI07",
+          "KI08",
+          "KI16",
+          "KI17",
+          "KI18",
+          "KI21"
+        ],
+        "held_out_groups": [
+          "K003",
+          "KA03",
+          "KA15",
+          "KA30",
+          "KI05",
+          "KI14"
+        ],
+        "train_windows": 51787,
+        "held_out_windows": 11978,
+        "selected_model": "rf_group_balanced_leaf2",
+        "inner_selection": [
+          {
+            "name": "rf_group_balanced_leaf2",
+            "inner_group_balanced_accuracy": 0.6952240229006429,
+            "inner_fold_scores": [
+              0.7437027707808564,
+              0.8476219789317683,
+              0.49434731898930423
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy15",
+            "inner_group_balanced_accuracy": 0.6921913994831844,
+            "inner_fold_scores": [
+              0.7450881612090681,
+              0.839286229442348,
+              0.4921998077981372
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy20",
+            "inner_group_balanced_accuracy": 0.6880787973521455,
+            "inner_fold_scores": [
+              0.7459697732997481,
+              0.8258873434474394,
+              0.4923792753092489
+            ]
+          },
+          {
+            "name": "rf_previous_baseline",
+            "inner_group_balanced_accuracy": 0.6774829909902843,
+            "inner_fold_scores": [
+              0.7381612090680101,
+              0.7967919504579327,
+              0.49749581344490995
+            ]
+          },
+          {
+            "name": "rf_group_balanced_leaf4",
+            "inner_group_balanced_accuracy": 0.6461371205569855,
+            "inner_fold_scores": [
+              0.7337531486146096,
+              0.7138648245135781,
+              0.4907933885427686
+            ]
+          }
+        ],
+        "group_balanced_accuracy": 0.9016114927646652
+      },
+      {
+        "fold": 3,
+        "train_groups": [
+          "K002",
+          "K003",
+          "K004",
+          "K005",
+          "K006",
+          "KA01",
+          "KA03",
+          "KA04",
+          "KA05",
+          "KA06",
+          "KA07",
+          "KA08",
+          "KA09",
+          "KA15",
+          "KA22",
+          "KA30",
+          "KB24",
+          "KB27",
+          "KI03",
+          "KI04",
+          "KI05",
+          "KI14",
+          "KI16",
+          "KI17",
+          "KI18",
+          "KI21"
+        ],
+        "held_out_groups": [
+          "K001",
+          "KA16",
+          "KB23",
+          "KI01",
+          "KI07",
+          "KI08"
+        ],
+        "train_windows": 51818,
+        "held_out_windows": 11947,
+        "selected_model": "rf_group_balanced_leaf4",
+        "inner_selection": [
+          {
+            "name": "rf_group_balanced_leaf4",
+            "inner_group_balanced_accuracy": 0.8747829150574312,
+            "inner_fold_scores": [
+              0.9720809737457,
+              0.9176903786245878,
+              0.7345773928020058
+            ]
+          },
+          {
+            "name": "rf_group_balanced_leaf2",
+            "inner_group_balanced_accuracy": 0.8629828585564275,
+            "inner_fold_scores": [
+              0.9334743339066658,
+              0.9169022632377135,
+              0.7385719785249035
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy15",
+            "inner_group_balanced_accuracy": 0.8605090003444812,
+            "inner_fold_scores": [
+              0.9216529012786396,
+              0.9190888243205697,
+              0.7407852754342341
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy20",
+            "inner_group_balanced_accuracy": 0.8593475329106877,
+            "inner_fold_scores": [
+              0.9186355532387875,
+              0.9186217700590413,
+              0.7407852754342341
+            ]
+          },
+          {
+            "name": "rf_previous_baseline",
+            "inner_group_balanced_accuracy": 0.8478130046663631,
+            "inner_fold_scores": [
+              0.8992663136074511,
+              0.9079758387043291,
+              0.7361968616873092
+            ]
+          }
+        ],
+        "group_balanced_accuracy": 0.961316015758962
+      },
+      {
+        "fold": 4,
+        "train_groups": [
+          "K001",
+          "K002",
+          "K003",
+          "K005",
+          "KA01",
+          "KA03",
+          "KA04",
+          "KA05",
+          "KA07",
+          "KA08",
+          "KA09",
+          "KA15",
+          "KA16",
+          "KA30",
+          "KB23",
+          "KB24",
+          "KI01",
+          "KI04",
+          "KI05",
+          "KI07",
+          "KI08",
+          "KI14",
+          "KI16",
+          "KI18",
+          "KI21"
+        ],
+        "held_out_groups": [
+          "K004",
+          "K006",
+          "KA06",
+          "KA22",
+          "KB27",
+          "KI03",
+          "KI17"
+        ],
+        "train_windows": 49835,
+        "held_out_windows": 13930,
+        "selected_model": "rf_group_balanced_leaf4",
+        "inner_selection": [
+          {
+            "name": "rf_group_balanced_leaf4",
+            "inner_group_balanced_accuracy": 0.7359939206454774,
+            "inner_fold_scores": [
+              0.7156782426747985,
+              0.9275843444569951,
+              0.5647191748046386
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy20",
+            "inner_group_balanced_accuracy": 0.6970960192499637,
+            "inner_fold_scores": [
+              0.6955833779300477,
+              0.9137893714797206,
+              0.4819153083401229
+            ]
+          },
+          {
+            "name": "rf_group_balanced_leaf2",
+            "inner_group_balanced_accuracy": 0.6966496452688064,
+            "inner_fold_scores": [
+              0.6985848141085257,
+              0.9103786990576457,
+              0.48098542264024785
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy15",
+            "inner_group_balanced_accuracy": 0.6949924450290034,
+            "inner_fold_scores": [
+              0.6950801066668367,
+              0.9090176424958445,
+              0.48087958592432895
+            ]
+          },
+          {
+            "name": "rf_previous_baseline",
+            "inner_group_balanced_accuracy": 0.6793307200477793,
+            "inner_fold_scores": [
+              0.6734572532521297,
+              0.8747020689560148,
+              0.4898328379351932
+            ]
+          }
+        ],
+        "group_balanced_accuracy": 0.9924711062154274
+      },
+      {
+        "fold": 5,
+        "train_groups": [
+          "K001",
+          "K002",
+          "K003",
+          "K004",
+          "K006",
+          "KA01",
+          "KA03",
+          "KA06",
+          "KA08",
+          "KA15",
+          "KA16",
+          "KA22",
+          "KA30",
+          "KB23",
+          "KB24",
+          "KB27",
+          "KI01",
+          "KI03",
+          "KI05",
+          "KI07",
+          "KI08",
+          "KI14",
+          "KI16",
+          "KI17",
+          "KI18"
+        ],
+        "held_out_groups": [
+          "K005",
+          "KA04",
+          "KA05",
+          "KA07",
+          "KA09",
+          "KI04",
+          "KI21"
+        ],
+        "train_windows": 49836,
+        "held_out_windows": 13929,
+        "selected_model": "rf_group_balanced_leaf4",
+        "inner_selection": [
+          {
+            "name": "rf_group_balanced_leaf4",
+            "inner_group_balanced_accuracy": 0.7840111595147762,
+            "inner_fold_scores": [
+              0.9578822729077092,
+              0.9040344094462983,
+              0.4901167961903214
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy15",
+            "inner_group_balanced_accuracy": 0.7772362822666299,
+            "inner_fold_scores": [
+              0.942357747232008,
+              0.900511813853596,
+              0.4888392857142857
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy20",
+            "inner_group_balanced_accuracy": 0.7766251542313705,
+            "inner_fold_scores": [
+              0.941854856466224,
+              0.8993253297301915,
+              0.48869527649769584
+            ]
+          },
+          {
+            "name": "rf_group_balanced_leaf2",
+            "inner_group_balanced_accuracy": 0.7753153178410989,
+            "inner_fold_scores": [
+              0.9397167145924314,
+              0.8974259555207271,
+              0.48880328341013823
+            ]
+          },
+          {
+            "name": "rf_previous_baseline",
+            "inner_group_balanced_accuracy": 0.7635585269719116,
+            "inner_fold_scores": [
+              0.9150469102594282,
+              0.8864293619005463,
+              0.48919930875576034
+            ]
+          }
+        ],
+        "group_balanced_accuracy": 0.9124179071630869
+      }
+    ],
+    "selected_final_model": "rf_group_balanced_leaf4",
+    "selection_frequency": {
+      "rf_group_balanced_leaf4": 4,
+      "rf_group_balanced_leaf2": 1
+    },
+    "mean_inner_group_balanced_accuracy": {
+      "rf_group_balanced_leaf4": 0.8057548811497164,
+      "rf_group_balanced_healthy15": 0.7994519475323016,
+      "rf_group_balanced_healthy20": 0.7986621078718932,
+      "rf_group_balanced_leaf2": 0.800292166153098,
+      "rf_previous_baseline": 0.78546190762882
+    }
+  },
+  "previous_model_comparison": {
+    "bearings": [
+      "K002",
+      "K003",
+      "KI04",
+      "KI14"
+    ],
+    "previous_model_metrics": {
+      "accuracy": 0.7856424440533065,
+      "macro_f1": 0.779581124219044,
+      "balanced_accuracy": 0.7856841906137682,
+      "classification_report": {
+        "healthy": {
+          "precision": 0.927738050432819,
+          "recall": 0.6196581196581197,
+          "f1-score": 0.7430293896006028,
+          "support": 3978.0
+        },
+        "other_bearing_damage": {
+          "precision": 0.7143666226165755,
+          "recall": 0.9517102615694165,
+          "f1-score": 0.8161328588374852,
+          "support": 3976.0
+        },
+        "accuracy": 0.7856424440533065,
+        "macro avg": {
+          "precision": 0.8210523365246972,
+          "recall": 0.7856841906137682,
+          "f1-score": 0.779581124219044,
+          "support": 7954.0
+        },
+        "weighted avg": {
+          "precision": 0.8210791622008119,
+          "recall": 0.7856424440533065,
+          "f1-score": 0.7795719334384007,
+          "support": 7954.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          2465,
+          1513
+        ],
+        [
+          192,
+          3784
+        ]
+      ],
+      "classes": [
+        "healthy",
+        "other_bearing_damage"
+      ],
+      "log_loss": 0.3434585763236875
+    },
+    "retrained_nested_cv_metrics": {
+      "accuracy": 0.749685692733216,
+      "macro_f1": 0.732989119287567,
+      "balanced_accuracy": 0.7497486173956762,
+      "classification_report": {
+        "healthy": {
+          "precision": 1.0,
+          "recall": 0.49949723479135244,
+          "f1-score": 0.666219614417435,
+          "support": 3978.0
+        },
+        "other_bearing_damage": {
+          "precision": 0.6663314898609016,
+          "recall": 1.0,
+          "f1-score": 0.7997586241576989,
+          "support": 3976.0
+        },
+        "accuracy": 0.749685692733216,
+        "macro avg": {
+          "precision": 0.8331657449304508,
+          "recall": 0.7497486173956762,
+          "f1-score": 0.732989119287567,
+          "support": 7954.0
+        },
+        "weighted avg": {
+          "precision": 0.8332076947054243,
+          "recall": 0.749685692733216,
+          "f1-score": 0.7329723303751028,
+          "support": 7954.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          1987,
+          1991
+        ],
+        [
+          0,
+          3976
+        ]
+      ],
+      "classes": [
+        "healthy",
+        "other_bearing_damage"
+      ],
+      "log_loss": 8.568311561104725
+    },
+    "retrained_nested_cv_by_bearing": {
+      "K002": {
+        "true_class": "healthy",
+        "windows": 1986,
+        "window_accuracy": 0.0,
+        "mean_damage_probability": 0.9995418207030745,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "K003": {
+        "true_class": "healthy",
+        "windows": 1992,
+        "window_accuracy": 0.9974899598393574,
+        "mean_damage_probability": 0.04675214965199905,
+        "majority_vote_prediction": "healthy"
+      },
+      "KI04": {
+        "true_class": "other_bearing_damage",
+        "windows": 1984,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.9956140699065347,
+        "majority_vote_prediction": "other_bearing_damage"
+      },
+      "KI14": {
+        "true_class": "other_bearing_damage",
+        "windows": 1992,
+        "window_accuracy": 1.0,
+        "mean_damage_probability": 0.991810867145832,
+        "majority_vote_prediction": "other_bearing_damage"
+      }
+    },
+    "note": "Matched comparison on the four bearing identities documented as validation/test holdouts for the old artifact. Predictions for the retrained model are outer-fold OOF predictions; this is not field validation."
+  },
+  "model_selection": {
+    "candidates": [
+      {
+        "name": "rf_previous_baseline",
+        "trees": 200,
+        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "max_samples": null,
+        "group_balanced": false,
+        "class_weight": "balanced_subsample"
+      },
+      {
+        "name": "rf_group_balanced_leaf2",
+        "trees": 300,
+        "max_features": "sqrt",
+        "min_samples_leaf": 2,
+        "max_samples": 0.8,
+        "group_balanced": true,
+        "class_weight": null
+      },
+      {
+        "name": "rf_group_balanced_leaf4",
+        "trees": 300,
+        "max_features": 0.75,
+        "min_samples_leaf": 4,
+        "max_samples": 0.8,
+        "group_balanced": true,
+        "class_weight": null
+      },
+      {
+        "name": "rf_group_balanced_healthy15",
+        "trees": 300,
+        "max_features": "sqrt",
+        "min_samples_leaf": 2,
+        "max_samples": 0.8,
+        "group_balanced": true,
+        "class_weight": {
+          "healthy": 1.5,
+          "other_bearing_damage": 1.0
+        }
+      },
+      {
+        "name": "rf_group_balanced_healthy20",
+        "trees": 300,
+        "max_features": "sqrt",
+        "min_samples_leaf": 2,
+        "max_samples": 0.8,
+        "group_balanced": true,
+        "class_weight": {
+          "healthy": 2.0,
+          "other_bearing_damage": 1.0
+        }
+      }
+    ],
+    "selection_method": "inner StratifiedGroupKFold, selected independently inside each outer fold; final config chosen by nested-fold selection frequency then mean inner score"
+  },
+  "previous_hyperparameter_baseline_same_folds": {
+    "accuracy": 0.923500352858151,
+    "macro_f1": 0.8724142066645705,
+    "balanced_accuracy": 0.8672760910542487,
+    "classification_report": {
+      "healthy": {
+        "precision": 0.8064207412563077,
+        "recall": 0.7774702231169267,
+        "f1-score": 0.7916809019473864,
+        "support": 11922.0
+      },
+      "other_bearing_damage": {
+        "precision": 0.9492452794092326,
+        "recall": 0.9570819589915707,
+        "f1-score": 0.9531475113817546,
+        "support": 51843.0
+      },
+      "accuracy": 0.923500352858151,
+      "macro avg": {
+        "precision": 0.8778330103327702,
+        "recall": 0.8672760910542487,
+        "f1-score": 0.8724142066645705,
+        "support": 63765.0
+      },
+      "weighted avg": {
+        "precision": 0.9225416936825931,
+        "recall": 0.923500352858151,
+        "f1-score": 0.9229584591167731,
+        "support": 63765.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        9269,
+        2653
+      ],
+      [
+        2225,
+        49618
+      ]
+    ],
+    "classes": [
+      "healthy",
+      "other_bearing_damage"
+    ],
+    "log_loss": 1.2095875661944513,
+    "per_bearing": {
+      "bearings": {
+        "K001": {
+          "true_class": "healthy",
+          "windows": 1987,
+          "window_accuracy": 0.9929542023150478,
+          "mean_damage_probability": 0.02801207851031706,
+          "majority_vote_prediction": "healthy"
+        },
+        "K002": {
+          "true_class": "healthy",
+          "windows": 1986,
+          "window_accuracy": 0.0,
+          "mean_damage_probability": 0.9994133937562941,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "K003": {
+          "true_class": "healthy",
+          "windows": 1992,
+          "window_accuracy": 0.9939759036144579,
+          "mean_damage_probability": 0.07720883534136547,
+          "majority_vote_prediction": "healthy"
+        },
+        "K004": {
+          "true_class": "healthy",
+          "windows": 1985,
+          "window_accuracy": 0.9556675062972292,
+          "mean_damage_probability": 0.12599496221662468,
+          "majority_vote_prediction": "healthy"
+        },
+        "K005": {
+          "true_class": "healthy",
+          "windows": 1988,
+          "window_accuracy": 0.7228370221327968,
+          "mean_damage_probability": 0.3103546277665996,
+          "majority_vote_prediction": "healthy"
+        },
+        "K006": {
+          "true_class": "healthy",
+          "windows": 1984,
+          "window_accuracy": 0.998991935483871,
+          "mean_damage_probability": 0.03681703629032258,
+          "majority_vote_prediction": "healthy"
+        },
+        "KA01": {
+          "true_class": "other_bearing_damage",
+          "windows": 1984,
+          "window_accuracy": 0.9979838709677419,
+          "mean_damage_probability": 0.995766129032258,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KA03": {
+          "true_class": "other_bearing_damage",
+          "windows": 2032,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9837721456692914,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KA04": {
+          "true_class": "other_bearing_damage",
+          "windows": 1986,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9945946626384692,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KA05": {
+          "true_class": "other_bearing_damage",
+          "windows": 1997,
+          "window_accuracy": 0.9984977466199298,
+          "mean_damage_probability": 0.990778668002003,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KA06": {
+          "true_class": "other_bearing_damage",
+          "windows": 1990,
+          "window_accuracy": 0.9989949748743718,
+          "mean_damage_probability": 0.9750502512562813,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KA07": {
+          "true_class": "other_bearing_damage",
+          "windows": 1997,
+          "window_accuracy": 0.9874812218327491,
+          "mean_damage_probability": 0.9311266900350526,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KA08": {
+          "true_class": "other_bearing_damage",
+          "windows": 1984,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9969077620967741,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KA09": {
+          "true_class": "other_bearing_damage",
+          "windows": 1994,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9786158475426279,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KA15": {
+          "true_class": "other_bearing_damage",
+          "windows": 1984,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9891507056451613,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KA16": {
+          "true_class": "other_bearing_damage",
+          "windows": 1984,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9998185483870968,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KA22": {
+          "true_class": "other_bearing_damage",
+          "windows": 1994,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9400325977933802,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KA30": {
+          "true_class": "other_bearing_damage",
+          "windows": 1984,
+          "window_accuracy": 0.9163306451612904,
+          "mean_damage_probability": 0.918530745967742,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KB23": {
+          "true_class": "other_bearing_damage",
+          "windows": 1993,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9845860511791269,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KB24": {
+          "true_class": "other_bearing_damage",
+          "windows": 1991,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9991059768960321,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KB27": {
+          "true_class": "other_bearing_damage",
+          "windows": 1984,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.999233870967742,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KI01": {
+          "true_class": "other_bearing_damage",
+          "windows": 1984,
+          "window_accuracy": 0.9027217741935484,
+          "mean_damage_probability": 0.9052444556451613,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KI03": {
+          "true_class": "other_bearing_damage",
+          "windows": 1998,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.995543043043043,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KI04": {
+          "true_class": "other_bearing_damage",
+          "windows": 1984,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9984274193548388,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KI05": {
+          "true_class": "other_bearing_damage",
+          "windows": 1994,
+          "window_accuracy": 0.17051153460381144,
+          "mean_damage_probability": 0.26058425275827485,
+          "majority_vote_prediction": "healthy"
+        },
+        "KI07": {
+          "true_class": "other_bearing_damage",
+          "windows": 2004,
+          "window_accuracy": 0.9366267465069861,
+          "mean_damage_probability": 0.8650773453093811,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KI08": {
+          "true_class": "other_bearing_damage",
+          "windows": 1995,
+          "window_accuracy": 0.9744360902255639,
+          "mean_damage_probability": 0.9674711779448621,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KI14": {
+          "true_class": "other_bearing_damage",
+          "windows": 1992,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9953915662650602,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KI16": {
+          "true_class": "other_bearing_damage",
+          "windows": 2042,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.994951028403526,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KI17": {
+          "true_class": "other_bearing_damage",
+          "windows": 1995,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9975739348370928,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KI18": {
+          "true_class": "other_bearing_damage",
+          "windows": 1994,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9882321965897692,
+          "majority_vote_prediction": "other_bearing_damage"
+        },
+        "KI21": {
+          "true_class": "other_bearing_damage",
+          "windows": 1983,
+          "window_accuracy": 1.0,
+          "mean_damage_probability": 0.9987644982349975,
+          "majority_vote_prediction": "other_bearing_damage"
+        }
+      },
+      "mean_window_accuracy_by_class": {
+        "healthy": 0.7774044283072338,
+        "other_bearing_damage": 0.9570609463456152
+      },
+      "group_balanced_accuracy": 0.8672326873264244
+    },
+    "folds": [
+      {
+        "fold": 1,
+        "held_out_groups": [
+          "K002",
+          "KA01",
+          "KA08",
+          "KB24",
+          "KI16",
+          "KI18"
+        ],
+        "group_balanced_accuracy": 0.4997983870967742
+      },
+      {
+        "fold": 2,
+        "held_out_groups": [
+          "K003",
+          "KA03",
+          "KA15",
+          "KA30",
+          "KI05",
+          "KI14"
+        ],
+        "group_balanced_accuracy": 0.9056721697837391
+      },
+      {
+        "fold": 3,
+        "held_out_groups": [
+          "K001",
+          "KA16",
+          "KB23",
+          "KI01",
+          "KI07",
+          "KI08"
+        ],
+        "group_balanced_accuracy": 0.9778555622501337
+      },
+      {
+        "fold": 4,
+        "held_out_groups": [
+          "K004",
+          "K006",
+          "KA06",
+          "KA22",
+          "KB27",
+          "KI03",
+          "KI17"
+        ],
+        "group_balanced_accuracy": 0.9885643579327122
+      },
+      {
+        "fold": 5,
+        "held_out_groups": [
+          "K005",
+          "KA04",
+          "KA05",
+          "KA07",
+          "KA09",
+          "KI04",
+          "KI21"
+        ],
+        "group_balanced_accuracy": 0.8602500917707883
+      }
+    ],
+    "evaluation_unit": "same nested-CV outer physical-bearing folds; previous Random Forest settings"
+  }
+}

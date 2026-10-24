@@ -1,0 +1,565 @@
+{
+  "bundle_schema_version": "axon-bearing-bundle-v1",
+  "kind": "bearing_random_forest",
+  "model_version": "axon-bearing-rf-40b0a17c59ef",
+  "created_at": "2026-10-24T07:53:45.372008+00:00",
+  "taxonomy_version": "axon-bearing-taxonomy-v1",
+  "preprocessing_version": "axon-vibration-features-v1",
+  "input_contract": {
+    "sensor_type": "vibration",
+    "sampling_frequency_hz": 64000.0,
+    "window_samples": 4096,
+    "feature_names": [
+      "mean",
+      "std",
+      "rms",
+      "variance",
+      "peak_amplitude",
+      "peak_to_peak",
+      "crest_factor",
+      "skewness",
+      "kurtosis",
+      "energy",
+      "frequency_energy",
+      "dominant_frequency_hz",
+      "spectral_centroid_hz",
+      "spectral_entropy",
+      "low_band_energy",
+      "high_band_energy"
+    ]
+  },
+  "classes": [
+    "healthy",
+    "other_bearing_damage"
+  ],
+  "split": {
+    "strategy": "nested_stratified_group_k_fold",
+    "group": "physical_bearing_id",
+    "outer_folds": 5,
+    "training_fit_groups": [
+      "K001",
+      "K002",
+      "K003",
+      "K004",
+      "K005",
+      "K006",
+      "KA01",
+      "KA03",
+      "KA04",
+      "KA05",
+      "KA06",
+      "KA07",
+      "KA08",
+      "KA09",
+      "KA15",
+      "KA16",
+      "KA22",
+      "KA30",
+      "KB23",
+      "KB24",
+      "KB27",
+      "KI01",
+      "KI03",
+      "KI04",
+      "KI05",
+      "KI07",
+      "KI08",
+      "KI14",
+      "KI16",
+      "KI17",
+      "KI18",
+      "KI21"
+    ],
+    "held_out_cv_windows": 63765,
+    "folds": [
+      {
+        "fold": 1,
+        "train_groups": [
+          "K001",
+          "K003",
+          "K004",
+          "K005",
+          "K006",
+          "KA03",
+          "KA04",
+          "KA05",
+          "KA06",
+          "KA07",
+          "KA09",
+          "KA15",
+          "KA16",
+          "KA22",
+          "KA30",
+          "KB23",
+          "KB27",
+          "KI01",
+          "KI03",
+          "KI04",
+          "KI05",
+          "KI07",
+          "KI08",
+          "KI14",
+          "KI17",
+          "KI21"
+        ],
+        "held_out_groups": [
+          "K002",
+          "KA01",
+          "KA08",
+          "KB24",
+          "KI16",
+          "KI18"
+        ],
+        "train_windows": 51784,
+        "held_out_windows": 11981,
+        "selected_model": "rf_group_balanced_leaf4",
+        "inner_selection": [
+          {
+            "name": "rf_group_balanced_leaf4",
+            "inner_group_balanced_accuracy": 0.987849289973911,
+            "inner_fold_scores": [
+              0.987809346947403,
+              0.9986220603054123,
+              0.9771164626689177
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy15",
+            "inner_group_balanced_accuracy": 0.9723306105382088,
+            "inner_fold_scores": [
+              0.9864480478304194,
+              0.9485002764326521,
+              0.9820435073515548
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy20",
+            "inner_group_balanced_accuracy": 0.9721630356152984,
+            "inner_fold_scores": [
+              0.9869866145570466,
+              0.9472972033502971,
+              0.9822052889385515
+            ]
+          },
+          {
+            "name": "rf_group_balanced_leaf2",
+            "inner_group_balanced_accuracy": 0.9712889861985143,
+            "inner_fold_scores": [
+              0.9851206652603972,
+              0.9479975118613534,
+              0.9807487814737924
+            ]
+          },
+          {
+            "name": "rf_previous_baseline",
+            "inner_group_balanced_accuracy": 0.9591242954677613,
+            "inner_fold_scores": [
+              0.9678722408430716,
+              0.9314666760944137,
+              0.9780339694657987
+            ]
+          }
+        ],
+        "group_balanced_accuracy": 0.4985383064516129
+      },
+      {
+        "fold": 2,
+        "train_groups": [
+          "K001",
+          "K002",
+          "K004",
+          "K005",
+          "K006",
+          "KA01",
+          "KA04",
+          "KA05",
+          "KA06",
+          "KA07",
+          "KA08",
+          "KA09",
+          "KA16",
+          "KA22",
+          "KB23",
+          "KB24",
+          "KB27",
+          "KI01",
+          "KI03",
+          "KI04",
+          "KI07",
+          "KI08",
+          "KI16",
+          "KI17",
+          "KI18",
+          "KI21"
+        ],
+        "held_out_groups": [
+          "K003",
+          "KA03",
+          "KA15",
+          "KA30",
+          "KI05",
+          "KI14"
+        ],
+        "train_windows": 51787,
+        "held_out_windows": 11978,
+        "selected_model": "rf_group_balanced_leaf2",
+        "inner_selection": [
+          {
+            "name": "rf_group_balanced_leaf2",
+            "inner_group_balanced_accuracy": 0.6952240229006429,
+            "inner_fold_scores": [
+              0.7437027707808564,
+              0.8476219789317683,
+              0.49434731898930423
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy15",
+            "inner_group_balanced_accuracy": 0.6921913994831844,
+            "inner_fold_scores": [
+              0.7450881612090681,
+              0.839286229442348,
+              0.4921998077981372
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy20",
+            "inner_group_balanced_accuracy": 0.6880787973521455,
+            "inner_fold_scores": [
+              0.7459697732997481,
+              0.8258873434474394,
+              0.4923792753092489
+            ]
+          },
+          {
+            "name": "rf_previous_baseline",
+            "inner_group_balanced_accuracy": 0.6774829909902843,
+            "inner_fold_scores": [
+              0.7381612090680101,
+              0.7967919504579327,
+              0.49749581344490995
+            ]
+          },
+          {
+            "name": "rf_group_balanced_leaf4",
+            "inner_group_balanced_accuracy": 0.6461371205569855,
+            "inner_fold_scores": [
+              0.7337531486146096,
+              0.7138648245135781,
+              0.4907933885427686
+            ]
+          }
+        ],
+        "group_balanced_accuracy": 0.9016114927646652
+      },
+      {
+        "fold": 3,
+        "train_groups": [
+          "K002",
+          "K003",
+          "K004",
+          "K005",
+          "K006",
+          "KA01",
+          "KA03",
+          "KA04",
+          "KA05",
+          "KA06",
+          "KA07",
+          "KA08",
+          "KA09",
+          "KA15",
+          "KA22",
+          "KA30",
+          "KB24",
+          "KB27",
+          "KI03",
+          "KI04",
+          "KI05",
+          "KI14",
+          "KI16",
+          "KI17",
+          "KI18",
+          "KI21"
+        ],
+        "held_out_groups": [
+          "K001",
+          "KA16",
+          "KB23",
+          "KI01",
+          "KI07",
+          "KI08"
+        ],
+        "train_windows": 51818,
+        "held_out_windows": 11947,
+        "selected_model": "rf_group_balanced_leaf4",
+        "inner_selection": [
+          {
+            "name": "rf_group_balanced_leaf4",
+            "inner_group_balanced_accuracy": 0.8747829150574312,
+            "inner_fold_scores": [
+              0.9720809737457,
+              0.9176903786245878,
+              0.7345773928020058
+            ]
+          },
+          {
+            "name": "rf_group_balanced_leaf2",
+            "inner_group_balanced_accuracy": 0.8629828585564275,
+            "inner_fold_scores": [
+              0.9334743339066658,
+              0.9169022632377135,
+              0.7385719785249035
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy15",
+            "inner_group_balanced_accuracy": 0.8605090003444812,
+            "inner_fold_scores": [
+              0.9216529012786396,
+              0.9190888243205697,
+              0.7407852754342341
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy20",
+            "inner_group_balanced_accuracy": 0.8593475329106877,
+            "inner_fold_scores": [
+              0.9186355532387875,
+              0.9186217700590413,
+              0.7407852754342341
+            ]
+          },
+          {
+            "name": "rf_previous_baseline",
+            "inner_group_balanced_accuracy": 0.8478130046663631,
+            "inner_fold_scores": [
+              0.8992663136074511,
+              0.9079758387043291,
+              0.7361968616873092
+            ]
+          }
+        ],
+        "group_balanced_accuracy": 0.961316015758962
+      },
+      {
+        "fold": 4,
+        "train_groups": [
+          "K001",
+          "K002",
+          "K003",
+          "K005",
+          "KA01",
+          "KA03",
+          "KA04",
+          "KA05",
+          "KA07",
+          "KA08",
+          "KA09",
+          "KA15",
+          "KA16",
+          "KA30",
+          "KB23",
+          "KB24",
+          "KI01",
+          "KI04",
+          "KI05",
+          "KI07",
+          "KI08",
+          "KI14",
+          "KI16",
+          "KI18",
+          "KI21"
+        ],
+        "held_out_groups": [
+          "K004",
+          "K006",
+          "KA06",
+          "KA22",
+          "KB27",
+          "KI03",
+          "KI17"
+        ],
+        "train_windows": 49835,
+        "held_out_windows": 13930,
+        "selected_model": "rf_group_balanced_leaf4",
+        "inner_selection": [
+          {
+            "name": "rf_group_balanced_leaf4",
+            "inner_group_balanced_accuracy": 0.7359939206454774,
+            "inner_fold_scores": [
+              0.7156782426747985,
+              0.9275843444569951,
+              0.5647191748046386
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy20",
+            "inner_group_balanced_accuracy": 0.6970960192499637,
+            "inner_fold_scores": [
+              0.6955833779300477,
+              0.9137893714797206,
+              0.4819153083401229
+            ]
+          },
+          {
+            "name": "rf_group_balanced_leaf2",
+            "inner_group_balanced_accuracy": 0.6966496452688064,
+            "inner_fold_scores": [
+              0.6985848141085257,
+              0.9103786990576457,
+              0.48098542264024785
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy15",
+            "inner_group_balanced_accuracy": 0.6949924450290034,
+            "inner_fold_scores": [
+              0.6950801066668367,
+              0.9090176424958445,
+              0.48087958592432895
+            ]
+          },
+          {
+            "name": "rf_previous_baseline",
+            "inner_group_balanced_accuracy": 0.6793307200477793,
+            "inner_fold_scores": [
+              0.6734572532521297,
+              0.8747020689560148,
+              0.4898328379351932
+            ]
+          }
+        ],
+        "group_balanced_accuracy": 0.9924711062154274
+      },
+      {
+        "fold": 5,
+        "train_groups": [
+          "K001",
+          "K002",
+          "K003",
+          "K004",
+          "K006",
+          "KA01",
+          "KA03",
+          "KA06",
+          "KA08",
+          "KA15",
+          "KA16",
+          "KA22",
+          "KA30",
+          "KB23",
+          "KB24",
+          "KB27",
+          "KI01",
+          "KI03",
+          "KI05",
+          "KI07",
+          "KI08",
+          "KI14",
+          "KI16",
+          "KI17",
+          "KI18"
+        ],
+        "held_out_groups": [
+          "K005",
+          "KA04",
+          "KA05",
+          "KA07",
+          "KA09",
+          "KI04",
+          "KI21"
+        ],
+        "train_windows": 49836,
+        "held_out_windows": 13929,
+        "selected_model": "rf_group_balanced_leaf4",
+        "inner_selection": [
+          {
+            "name": "rf_group_balanced_leaf4",
+            "inner_group_balanced_accuracy": 0.7840111595147762,
+            "inner_fold_scores": [
+              0.9578822729077092,
+              0.9040344094462983,
+              0.4901167961903214
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy15",
+            "inner_group_balanced_accuracy": 0.7772362822666299,
+            "inner_fold_scores": [
+              0.942357747232008,
+              0.900511813853596,
+              0.4888392857142857
+            ]
+          },
+          {
+            "name": "rf_group_balanced_healthy20",
+            "inner_group_balanced_accuracy": 0.7766251542313705,
+            "inner_fold_scores": [
+              0.941854856466224,
+              0.8993253297301915,
+              0.48869527649769584
+            ]
+          },
+          {
+            "name": "rf_group_balanced_leaf2",
+            "inner_group_balanced_accuracy": 0.7753153178410989,
+            "inner_fold_scores": [
+              0.9397167145924314,
+              0.8974259555207271,
+              0.48880328341013823
+            ]
+          },
+          {
+            "name": "rf_previous_baseline",
+            "inner_group_balanced_accuracy": 0.7635585269719116,
+            "inner_fold_scores": [
+              0.9150469102594282,
+              0.8864293619005463,
+              0.48919930875576034
+            ]
+          }
+        ],
+        "group_balanced_accuracy": 0.9124179071630869
+      }
+    ]
+  },
+  "training": {
+    "seed": 42,
+    "selected_model": {
+      "name": "rf_group_balanced_leaf4",
+      "trees": 300,
+      "max_features": 0.75,
+      "min_samples_leaf": 4,
+      "max_samples": 0.8,
+      "group_balanced": true,
+      "class_weight": null
+    },
+    "all_bearing_balanced": true,
+    "physical_bearings_per_class": {
+      "healthy": 6,
+      "other_bearing_damage": 26
+    },
+    "windows": 63765,
+    "duration_seconds": 1645.948321399992,
+    "library_versions": {
+      "python": "3.11.9",
+      "scikit_learn": "1.9.1"
+    }
+  },
+  "source": {
+    "prepared_path": "paderborn-prepared-r4/windows.npz",
+    "sha256": "5651c91bc77a787316f7b4e16c56bb5d54b8a03527b3278299583adbaae80359",
+    "dataset_manifest": "dataset_manifest.json",
+    "dataset_manifest_sha256": "8658813effd45040485983318d4573abe920782120062ac34480af8bb9042f60",
+    "archive_filename": "archive.zip",
+    "archive_size_bytes": 9686480020,
+    "selected_recordings": 512,
+    "recordings_per_bearing_condition": 4,
+    "excluded_recordings": 2048
+  },
+  "artifact": {
+    "filename": "model.joblib",
+    "sha256": "40b0a17c59ef53b0211f5d45847234ac239aac96c6a36f08f51f3d2266023a0d"
+  }
+}
