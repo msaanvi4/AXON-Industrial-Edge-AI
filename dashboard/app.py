@@ -426,9 +426,9 @@ def paderborn_dataset_replay_panel():
     result_columns[0].metric("Physical bearing", dataset_bearing)
     result_columns[1].metric("Recording run", recording_number)
     result_columns[2].metric("Vibration window", f"{replay_window + 1} / {replay_total}")
-    display_confidence = min(float(diagnostic.get("confidence", 0)), 0.8678) if diagnostic.get("confidence") is not None else None
+    display_confidence = min(float(diagnostic.get("confidence", 0)), 0.918) if diagnostic.get("confidence") is not None else None
     result_columns[3].metric("Operational confidence", f"{display_confidence:.1%}" if display_confidence is not None else "Unavailable")
-    st.caption("Operational confidence is conservatively capped at 86.78% for uncalibrated Random Forest votes. The raw score remains in the technical record.")
+    st.caption("Operational confidence is capped at 91.8% for uncalibrated Random Forest votes. The raw score remains in the technical record.")
     st.info(f"""**Dataset label:** {pretty_label(expected)}
 
 **Documented damage:** {replay_dataset.get('damage_type') or 'No documented damage'}
@@ -565,9 +565,9 @@ def bearing_diagnosis_panel():
                 else:
                     st.markdown("<div class='diagnostic-card'><div class='diagnostic-eyebrow'>MODEL DECISION</div><div class='diagnostic-value'>No actionable localization</div><div class='diagnostic-detail'>The result does not support a component-level service action.</div></div>", unsafe_allow_html=True)
                 metric_left, metric_right = st.columns(2)
-                display_confidence = min(float(latest.get("confidence", 0)), 0.8678) if latest.get("confidence") is not None else None
+                display_confidence = min(float(latest.get("confidence", 0)), 0.918) if latest.get("confidence") is not None else None
                 metric_left.metric("Operational confidence", f"{display_confidence:.1%}" if display_confidence is not None else "Unavailable")
-                st.caption("Capped at 86.78% for this uncalibrated model; raw tree-vote probability is available in the technical record.")
+                st.caption("Capped at 91.8% for this uncalibrated model; raw tree-vote probability is available in the technical record.")
                 short_status = {"FAULT_SUSPECTED": "Fault", "FAULT_CONFIRMED": "Verified", "HEALTHY_WITHIN_VALIDATED_SCOPE": "Healthy", "DIAGNOSIS_UNCERTAIN": "Uncertain", "SENSOR_DATA_INVALID": "Invalid sensor data", "MODEL_UNAVAILABLE": "Model unavailable"}.get(latest.get("status"), pretty_label(latest.get("status")))
                 metric_right.metric("Status", short_status)
                 if latest.get("status") in {"MODEL_UNAVAILABLE", "SENSOR_DATA_INVALID", "DIAGNOSIS_UNCERTAIN"}:
