@@ -2,6 +2,9 @@ param([switch]$Restart)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $projectPython = Join-Path $projectRoot '.venv\Scripts\python.exe'
+if (-not (Test-Path -LiteralPath $projectPython)) {
+    $projectPython = Join-Path $projectRoot '.venv-ml\Scripts\python.exe'
+}
 $runtimePath = Join-Path $projectRoot 'runtime'
 if (-not (Test-Path -LiteralPath $projectPython)) {
     throw 'Create .venv and install the requirements from README.md first.'
@@ -54,7 +57,7 @@ try {
     }
     if (-not $healthy) { throw "Startup did not complete. Inspect logs in $runtimePath." }
     Write-Output "Dashboard: http://127.0.0.1:8501 | AXON Verify: http://127.0.0.1:8000/app/ | Model: $($model.model_version) | Storage: $($ready.storage)"
-    Write-Output 'Replay runner: .\.venv\Scripts\python.exe -m edge.bearing_runner --transport loopback --interval 5'
+    Write-Output "Replay runner: `"$projectPython`" -m edge.bearing_runner --transport loopback --interval 5"
 } finally {
     $env:AXON_STORAGE_MODE = $previousMode
     $env:BACKEND_URL = $previousBackendUrl
