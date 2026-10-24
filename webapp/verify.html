@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AXON Verify — certificate verification</title>
+  <link rel="stylesheet" href="/app/styles.css"/>
+  <style>
+    .verify-wrap { max-width: 860px; margin: 0 auto; padding: 30px 22px 70px; }
+    .verify-head { display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 18px; }
+    .result-banner { border-radius: 12px; padding: 18px 22px; margin-bottom: 18px;
+      border: 1px solid var(--line); background: #fff; display: flex; gap: 16px; align-items: center; }
+    .result-banner .icon { font-size: 30px; }
+    .result-banner.good { background: var(--verified-bg); border-color: #bbf7d0; }
+    .result-banner.bad { background: var(--failed-bg); border-color: #fecaca; }
+    .result-banner h2 { font-size: 19px; }
+    .result-banner p { margin: 3px 0 0; color: var(--ink-soft); font-size: 13.5px; }
+    .digest { font-family: var(--mono); font-size: 11px; word-break: break-all; color: var(--muted); }
+    .checklist { display: grid; gap: 6px; margin: 12px 0; }
+    .check { display: flex; gap: 10px; align-items: baseline; font-size: 13.5px; }
+    .check .mark { font-family: var(--mono); font-weight: 700; width: 62px; flex: none; }
+    .check.ok .mark { color: var(--verified); }
+    .check.bad .mark { color: var(--failed); }
+    .check.warn .mark { color: var(--uncertain); }
+    textarea.paste { width: 100%; min-height: 120px; font-family: var(--mono); font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="verify-wrap">
+    <div class="verify-head">
+      <div>
+        <div class="logo" style="color:var(--ink)">AXON<span> VERIFY</span></div>
+        <div class="tagline" style="padding:0">public certificate verification</div>
+      </div>
+      <a class="btn" href="/app/">Open the app</a>
+    </div>
+    <div id="out"><div class="card"><div class="empty"><span class="spinner"></span> loading certificate…</div></div></div>
+
+    <div class="card">
+      <h2>Verify a certificate offline</h2>
+      <p class="hint">Paste the signed JSON you received (the object containing
+         <code>payload</code>, <code>signature</code> and <code>key</code>). This page re-computes
+         the signature in your browser with WebCrypto; nothing is sent anywhere.</p>
+      <textarea class="paste" id="paste" placeholder='{"payload": {...}, "signature": "...", "key": {"key_id": "...", "public_key_pem": "..."}}'></textarea>
+      <div class="row-actions"><button class="primary" id="paste-verify">Verify pasted certificate</button></div>
+      <div id="paste-out"></div>
+    </div>
+  </div>
+
+  <script>
+    const $ = (s) => document.querySelector(s);
+    const esc = (v) => String(v ?? "").replace(/[&<>"']/g,
+      (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const pct = (v) => (v === null || v === undefined) ? "—" : `${(Number(v) * 100).toFixed(1)}%`;
+    const fmt = (v) => v ? new Date(v).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) : "—";
+
+    /* Canonical form shared with the backend: every number becomes %.6f,
+       every object has sorted keys, compact separators, no ASCII escaping. */
+    function normalize(value) {
+      if (value === null || value === undefined) return null;
+      if (typeof value === "number") return value.toFixed(6);
+      if (Array.isArray(value)) return value.map(normalize);
+      if (typeof value === "object") {
+        const out = {};
+        Object.keys(value).sort().forEach((k) => { out[k] = normalize(value[k]); });
+        return out;
+      }
+      return value;
+    }
+
+    const encoder = new TextEncoder();
+
+    function pemToDer(pem) {
+      const body = pem.replace(/-----BEGIN PUBLIC KEY-----/, "")
+        .replace(/-----END PUBLIC KEY-----/, "").replace(/\s+/g, "");
+      const raw = atob(body);
+      const bytes = new Uint8Array(raw.length);
+      for (let i = 0; i < raw.length; i += 1) bytes[i] = raw.charCodeAt(i);
+      return bytes;
+    }
+
+    function b64ToBytes(value) {
+      const raw = atob(value);
+      const bytes = new Uint8Array(raw.length);
+      for (let i = 0; i < raw.length; i += 1) bytes[i] = raw.charCodeAt(i);
+      return bytes;
+    }
+
+    async function verifyEd25519(payload, signatureB64, publicPem) {
+      if (!window.crypto || !crypto.subtle || !crypto.subtle.importKey) {
+        return { supported: false, valid: null };
+      }
+      try {
+        const key = await crypto.subtle.importKey("spki", pemToDer(publicPem),
+          { name: "Ed25519" }, false, ["verify"]);
+        const data = encoder.encode(JSON.stringify(normalize(payload)));
+        const valid = await crypto.subtle.verify({ name: "Ed25519" }, key,
+          b64ToBytes(signatureB64), data);
+        return { supported: true, valid };
+      } catch (error) {
+        return { supported: false, valid: null, reason: String(error) };
+      }
+    }
+
+    function checkRow(ok, label, detail) {
+      return `<div class="check ${ok === true ? "ok" : ok === false ? "bad" : "warn"}">
+        <span class="mark">${ok === true ? "PASS" : ok === false ? "FAIL" : "n/a"}</span>
+        <span><b>${esc(label)}</b>${detail ? `<div class="digest">${esc(detail)}</div>` : ""}</span></div>`;
+    }
+
+    async function renderCertificate(record) {
+      const payload = record.payload;
+      const asset = payload.asset || {};
+      const component = payload.component || {};
+      const before = payload.before || {};
+      const after = payload.after || {};
+      const contract = payload.input_contract || {};
+      const comparison = payload.comparability || {};
+      const reasons = (payload.reasons || []).map((r) =>
+        `<li><b>${esc(r.code)}</b> — ${esc(r.detail)}</li>`).join("");
+
+      const browserCheck = await verifyEd25519(payload, record.signature,
+        (record.key || {}).public_key_pem || "");
+      const serverValid = record.valid !== false;
+
+      const banner = serverValid
+        ? `<div class="result-banner good"><div class="icon">✔</div><div>
+             <h2>Signature valid</h2>
+             <p>This record has not been altered since it was signed by
+                <b>${esc((record.key || {}).key_id || payload.issuer)}</b>.
+                ${browserCheck.supported
+                  ? "Confirmed independently in your browser with WebCrypto."
+                  : "Confirmed by the issuing server; this browser does not support Ed25519 in WebCrypto, so run the CLI verifier for an offline check."}
+             </p></div></div>`
+        : `<div class="result-banner bad"><div class="icon">✖</div><div>
+             <h2>Signature verification failed</h2>
+             <p>This document must not be trusted. The payload does not match the published key.</p>
+           </div></div>`;
+
+      const replayed = [before, after].filter((s) => s.simulated);
+
+      $("#out").innerHTML = `
+        ${banner}
+        <div class="card">
+          <h2>Repair record</h2>
+          <div class="grid cols-2">
+            <div>
+              <dl class="kv">
+                <dt>Certificate</dt><dd>${esc(payload.certificate_id)}</dd>
+                <dt>Issuer</dt><dd>${esc(payload.issuer)}</dd>
+                <dt>Issued at</dt><dd>${esc(fmt(payload.issued_at))}</dd>
+                <dt>Verdict</dt><dd><b>${esc(payload.verdict)}</b></dd>
+                <dt>Work order</dt><dd>${esc(payload.work_order_id)}</dd>
+                <dt>Repair session</dt><dd>${esc(payload.repair_id)}</dd>
+              </dl>
+            </div>
+            <div>
+              <dl class="kv">
+                <dt>Asset</dt><dd>${esc(asset.name)}</dd>
+                <dt>Type</dt><dd>${esc(asset.asset_type)}</dd>
+                <dt>Manufacturer</dt><dd>${esc(asset.manufacturer)} ${esc(asset.model)}</dd>
+                <dt>Serial</dt><dd>${esc(asset.serial)}</dd>
+                <dt>Component</dt><dd>${esc(component.name)}</dd>
+                <dt>Technician</dt><dd>${esc(payload.technician)}</dd>
+              </dl>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--ink-soft)">${esc(payload.scope)}</p>
+        </div>
+
+        <div class="card">
+          <h2>Evidence</h2>
+          <table>
+            <thead><tr><th>Phase</th><th>Model status</th><th>Class</th><th>Confidence</th>
+              <th>Captured</th><th>Source</th><th>Reading hash</th></tr></thead>
+            <tbody>
+              <tr><td><b>Before</b></td><td>${esc(before.status)}</td><td>${esc(before.fault_class)}</td>
+                <td>${pct(before.confidence)}${before.confidence_calibrated ? "" : " · raw"}</td>
+                <td>${esc(fmt(before.captured_at))}</td><td>${esc(before.source)}</td>
+                <td class="digest">${esc((before.reading_sha256 || "").slice(0, 20))}…</td></tr>
+              <tr><td><b>After</b></td><td>${esc(after.status)}</td><td>${esc(after.fault_class)}</td>
+                <td>${pct(after.confidence)}${after.confidence_calibrated ? "" : " · raw"}</td>
+                <td>${esc(fmt(after.captured_at))}</td><td>${esc(after.source)}</td>
+                <td class="digest">${esc((after.reading_sha256 || "").slice(0, 20))}…</td></tr>
+            </tbody>
+          </table>
+          <h2 style="margin-top:18px">Verification reasons</h2>
+          <ul style="font-size:13.5px">${reasons || "<li>none recorded</li>"}</ul>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
+            ${Object.entries(comparison).filter(([k]) => k !== "comparable").map(([k, ok]) =>
+              `<span class="badge ${ok ? "ok" : "bad"}">${esc(k.replace(/_/g, " "))}</span>`).join("")}
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Integrity checks</h2>
+          <div class="checklist">
+            ${checkRow(serverValid, "Signature verifies against the published key",
+              (record.key || {}).key_id)}
+            ${checkRow(browserCheck.valid === true ? true : browserCheck.valid === false ? false : null,
+              "Independent browser verification (WebCrypto Ed25519)",
+              browserCheck.supported ? "" : (browserCheck.reason || "not supported in this browser"))}
+            ${checkRow(true, "Before evidence hash", before.evidence_sha256)}
+            ${checkRow(true, "After evidence hash", after.evidence_sha256)}
+            ${checkRow(true, "Model version", contract.model_version)}
+            ${checkRow(contract.confidence_calibrated ? true : null,
+              contract.confidence_calibrated ? "Confidence is calibrated" : "Confidence is NOT calibrated",
+              contract.confidence_calibrated ? "" : "raw model scores; conservative policy applied")}
+            ${checkRow(Object.values(comparison).every((v) => v === true || v === undefined) ? true : false,
+              "Before and after readings were comparable")}
+          </div>
+          ${contract.confidence_calibrated ? "" : `
+            <div class="notice"><b>Uncalibrated confidence</b>
+              The deployed model has no calibration artifact, so the confidence figures above are
+              raw classifier scores rather than probabilities of correctness.</div>`}
+          ${replayed.length ? `
+            <div class="notice"><b>Replayed evidence</b>
+              ${replayed.length} of the readings on this certificate were produced by replaying
+              packaged historical laboratory recordings (Paderborn University bearing dataset,
+              CC BY-NC 4.0), not by live field capture.</div>` : ""}
+        </div>
+
+        <div class="card">
+          <h2>Signed payload</h2>
+          <p class="hint">Canonical JSON, numbers rendered at fixed precision so any language
+             re-serialises the same bytes.</p>
+          <pre class="code" style="max-height:280px;overflow:auto">${esc(JSON.stringify(payload, null, 2))}</pre>
+          <div class="digest">signature: ${esc(record.signature)}</div>
+          <div class="digest" style="margin-top:6px">public key: ${esc(((record.key || {}).public_key_pem || "").replace(/\n/g, " "))}</div>
+        </div>
+
+        <div class="card">
+          <h2>What this certificate does not say</h2>
+          <p style="font-size:13px;color:var(--ink-soft);margin:0">${esc(payload.disclaimer)}</p>
+        </div>`;
+    }
+
+    async function load() {
+      const id = location.pathname.split("/").filter(Boolean).pop();
+      try {
+        const response = await fetch(`/v1/public/certificates/${encodeURIComponent(id)}`);
+        const record = await response.json();
+        if (!response.ok) {
+          $("#out").innerHTML = `<div class="card"><div class="notice bad"><b>Not found</b>
+            ${esc(record.reason || "no certificate with this id")}</div></div>`;
+          return;
+        }
+        await renderCertificate(record);
+      } catch (error) {
+        $("#out").innerHTML = `<div class="card"><div class="notice bad"><b>Could not load</b>
+          ${esc(error.message)}</div></div>`;
+      }
+    }
+
+    $("#paste-verify").addEventListener("click", async () => {
+      const out = $("#paste-out");
+      try {
+        const record = JSON.parse($("#paste").value);
+        if (!record.payload || !record.signature) throw new Error("expected payload and signature");
+        const key = record.key || {};
+        if (!key.public_key_pem) throw new Error("expected key.public_key_pem");
+        const check = await verifyEd25519(record.payload, record.signature, key.public_key_pem);
+        if (!check.supported) {
+          out.innerHTML = `<div class="notice"><b>Browser cannot verify Ed25519</b>
+            Use the offline CLI: <code>python -m backend.certificate_verify certificate.json</code></div>`;
+          return;
+        }
+        out.innerHTML = check.valid
+          ? `<div class="notice ok"><b>Valid</b>The pasted certificate signature verifies against key ${esc(key.key_id)}.</div>`
+          : `<div class="notice bad"><b>Invalid</b>The signature does not match the payload.</div>`;
+      } catch (error) {
+        out.innerHTML = `<div class="notice bad"><b>Could not parse</b>${esc(error.message)}</div>`;
+      }
+    });
+
+    load();
+  </script>
+</body>
+</html>

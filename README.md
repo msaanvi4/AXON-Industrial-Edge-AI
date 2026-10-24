@@ -16,6 +16,8 @@ python -m venv .venv
 
 Open http://127.0.0.1:8501. The launcher explicitly uses memory storage, so Docker is optional for this demo and diagnostic history disappears when the API stops. Use AXON_STORAGE_MODE=external with the existing Docker Compose services for persistent storage.
 
+The AXON Verify web app is also served by the API at http://127.0.0.1:8000/app/. It uses the same active bearing model for authenticated vibration uploads and Paderborn replay, and records repair evidence and signed verification certificates. In memory demo mode its accounts and evidence reset when the API stops.
+
 The packaged model is under ml/artifacts/bearing/active. Its SHA-256, input contract and training library version are checked. The API and Pi use the same requirements. No retraining or synthetic data generation is required to run it.
 
 ## Integrated bearing path

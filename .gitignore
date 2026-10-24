@@ -17,6 +17,7 @@ ml/artifacts/bearing/active/*
 !ml/artifacts/bearing/active/evaluation.json
 !ml/artifacts/bearing/active/README.md
 runtime/
+var/
 .codex-build/
 dashboard-server.*.log
 backend-server.*.log

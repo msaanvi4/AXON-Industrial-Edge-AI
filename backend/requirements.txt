@@ -5,5 +5,7 @@ psycopg2-binary==2.9.10
 pytest==8.3.4
 httpx==0.28.1
 python-dotenv==1.2.4
+cryptography>=43,<47
+paho-mqtt>=2,<3
 # Shared with the Pi and trainer; must match the serialized bearing model.
 -r ../ml/requirements-bearing.txt

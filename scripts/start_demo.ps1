@@ -43,8 +43,9 @@ try {
         try {
             $ready = Invoke-RestMethod 'http://127.0.0.1:8000/ready' -TimeoutSec 2
             $model = Invoke-RestMethod 'http://127.0.0.1:8000/diagnostics/model-status' -TimeoutSec 3
+            $verifyPage = Invoke-WebRequest 'http://127.0.0.1:8000/app/' -UseBasicParsing -TimeoutSec 2
             $page = Invoke-WebRequest 'http://127.0.0.1:8501/_stcore/health' -UseBasicParsing -TimeoutSec 2
-            if ($ready.status -eq 'ready' -and $model.available -and $page.StatusCode -eq 200) {
+            if ($ready.status -eq 'ready' -and $model.available -and $verifyPage.StatusCode -eq 200 -and $page.StatusCode -eq 200) {
                 $healthy = $true
                 break
             }
@@ -52,7 +53,7 @@ try {
         Start-Sleep -Seconds 1
     }
     if (-not $healthy) { throw "Startup did not complete. Inspect logs in $runtimePath." }
-    Write-Output "Dashboard: http://127.0.0.1:8501 | Model: $($model.model_version) | Storage: $($ready.storage)"
+    Write-Output "Dashboard: http://127.0.0.1:8501 | AXON Verify: http://127.0.0.1:8000/app/ | Model: $($model.model_version) | Storage: $($ready.storage)"
     Write-Output 'Replay runner: .\.venv\Scripts\python.exe -m edge.bearing_runner --transport loopback --interval 5'
 } finally {
     $env:AXON_STORAGE_MODE = $previousMode
